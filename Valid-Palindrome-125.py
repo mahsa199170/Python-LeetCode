@@ -27,3 +27,40 @@ class Solution(object):
         return s == s[::-1]
 
 
+# one way is to create alphanum function(using ASCII  codes) then use it
+
+s = "A man, a plan, a canal: Panama"
+
+
+
+def alphanum(c):
+
+    return (
+        ord("A") <= ord(c) <= ord("Z") or
+        ord("a") <= ord(c) <= ord("z") or
+        ord("0") <= ord(c) <= ord("9")
+    )
+
+
+
+def palindrom(s):
+
+    i = 0
+    j = len(s) - 1
+
+    while i < j:
+        while i < j and not alphanum(s[i]):
+            i +=1
+        while i < j and not alphanum(s[j]):
+            j -=1
+
+        if s[i].lower() != s[j].lower():
+            return False
+
+        i += 1
+        j -= 1
+    return True
+
+print(palindrom(s))
+
+
